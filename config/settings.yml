@@ -1,0 +1,9 @@
+twitter:
+  consumer_key: <CONSUMER KEY>
+  consumer_secret: <CONSUMER SECRET>
+facebook:
+  app_id: <APP ID>
+  app_secret: <APP SECRET>
+  permissions:
+    required: []
+    optional: []
