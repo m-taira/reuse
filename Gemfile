@@ -78,3 +78,5 @@ gem "carrierwave"
 gem "fog"
 gem "rmagick", require: false
 gem "kaminari"
+gem 'enumerize'
+gem 'jquery-turbolinks'
