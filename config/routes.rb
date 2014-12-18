@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :items
+
   get 'auth/failure' => 'session#failure'
   get '/logout' => 'sessions#destroy', :as => :logout
   post '/auth/:provider/callback', :to => 'sessions#callback'

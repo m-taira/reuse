@@ -1,0 +1,9 @@
+ja:
+  enumerize:
+    classification:
+      given: あげます
+      taken: ください
+    status:
+      open: 受付中
+      negotiating: 交渉中
+      close: 終了

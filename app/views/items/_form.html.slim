@@ -1,0 +1,16 @@
+= simple_form_for(@item) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :description
+    = f.input :category
+    = f.input :image1, as: :image_preview, input_html: { preview_version: :thumb }
+    = f.input :image2, as: :image_preview
+    = f.input :image3, as: :image_preview
+    = f.input :prefecture, as: :select, collection: ["北海道", "大阪", "沖縄"].map.with_index(1){|v, i| [v, i]}
+    = f.input :city
+    = f.input :classification, item_wrapper_class: "radio-inline", as: :radio_buttons
+
+  .form-actions
+    = f.button :submit
