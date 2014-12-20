@@ -19,14 +19,14 @@ html
               span.icon-bar
             a.navbar-brand[href="#"]
               | Bootflat
-            ui.nav.navbar-nav
-              li.first menu1
-              li menu2
-              li menu3
 
           #bs-example-navbar-collapse-4.collapse.navbar-collapse.pull-right
-            uibutton.btn.btn-default.navbar-btn[type="button"]
-              | Sign in
+            = link_to "Sign in", "/login", class: "btn btn-default navbar-btn" unless logged_in?
+
+            ul.nav.navbar-nav
+              li.first = link_to "menu1"
+              li = link_to "menu2"
+              li = link_to t("logout"), "/logout" if logged_in?
       .container
         .row
           .col-md-12

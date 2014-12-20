@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   resources :items
 
-  get 'auth/failure' => 'session#failure'
+  get 'auth/failure' => 'sessions#failure'
   get '/logout' => 'sessions#destroy', :as => :logout
+  get '/login' => 'sessions#new', :as => :login
   post '/auth/:provider/callback', :to => 'sessions#callback'
   get '/auth/:provider/callback', :to => 'sessions#callback'
   root to: 'home#index'
