@@ -1,4 +1,8 @@
 class Item < ActiveRecord::Base
+
+  scope :all_taken, ->{where(classification: :taken)}
+  scope :all_given, ->{where(classification: :given)}
+
   extend Enumerize
 
   # sample code

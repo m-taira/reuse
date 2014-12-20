@@ -1,4 +1,27 @@
-h1 Home#index
-p Find me in app/views/home/index.html.slim
-i.fa.fa-camera-retro.fa-lg
-i.fa.fa-camera-retro.fa-2x
+.panel.panel-default
+  .panel-heading
+    h3.panel-title あげます
+  .panel-body
+    .row
+      - 4.times do |i|
+        .col-md-3
+          .item_list_block = link_to @given_items[i] do
+            .image.text-center = image_tag @given_items[i].image1.url, width: "100x100"
+            .name.text-center = @given_items[i].name.truncate(20)
+
+
+
+
+
+.panel.panel-default
+  .panel-heading
+    h3.panel-title ください
+  .panel-body
+    .row
+      - 4.times do |i|
+        .col-md-3
+          .item_list_block = link_to @taken_items[i] do
+            .image.text-center = image_tag @taken_items[i].image1.url, width: "100x100"
+            .name.text-center = @taken_items[i].name.truncate(20)
+
+
