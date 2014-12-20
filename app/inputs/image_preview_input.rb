@@ -8,6 +8,7 @@ class ImagePreviewInput < SimpleForm::Inputs::FileInput
       # append preview image to output
       out << template.image_tag(object.send(attribute_name).tap {|o| break o.send(version) if version}.send('url'))
       out << @builder.check_box("remove_#{attribute_name}").html_safe
+      out << @builder.label("remove_#{attribute_name}", t('delete this image')).html_safe
     end
     # allow multiple submissions without losing the tmp version
     out << @builder.hidden_field("#{attribute_name}_cache").html_safe
