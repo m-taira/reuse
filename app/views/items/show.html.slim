@@ -1,39 +1,42 @@
 p#notice = notice
+.row
+  .col-md-6
+    = image_tag @item.image1.url
+    = image_tag @item.image2.url
+    = image_tag @item.image3.url
+  .col-md-6
+    p.text-muted
+      strong Name:
+    p
+      = @item.name
+    p
+      strong Description:
+    p
+      = @item.description
+    p
+      strong Category:
+    p
+      = @item.category
+    p
+      strong Prefecture:
+    p
+       = @item.prefecture
+    p
+      strong City:
+    p
+      = @item.city
+    p
+      strong Classification:
+    p
+      = @item.classification
+    p
+      strong Status:
+    p
+      = @item.status
+    p
+      strong User:
+      = @item.user_id
 
-p
-  strong Name:
-  = @item.name
-p
-  strong Description:
-  = @item.description
-p
-  strong Category:
-  = @item.category
-p
-  strong Image1:
-  = image_tag @item.image1.url
-p
-  strong Image2:
-  = image_tag @item.image2.url
-p
-  strong Image3:
-  = image_tag @item.image3.url
-p
-  strong Prefecture:
-  = @item.prefecture
-p
-  strong City:
-  = @item.city
-p
-  strong Classification:
-  = @item.classification
-p
-  strong Status:
-  = @item.status
-p
-  strong User:
-  = @item.user_id
-
-= link_to 'Edit', edit_item_path(@item)
-'|
-= link_to 'Back', items_path
+    = link_to 'Edit', edit_item_path(@item)
+    '|
+    = link_to 'Back', items_path
