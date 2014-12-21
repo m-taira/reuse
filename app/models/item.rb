@@ -14,4 +14,18 @@ class Item < ActiveRecord::Base
   mount_uploader :image1, ItemImageUploader
   mount_uploader :image2, ItemImageUploader
   mount_uploader :image3, ItemImageUploader
+
+  has_many :offers
+
+  def offered?(user)
+    !!offer(user)
+  end
+
+  def offer(user)
+    return nil unless user
+
+    id = user.kind_of?(Numeric) ? user : user.id
+
+    offers.find_by(user_id: id)
+  end
 end

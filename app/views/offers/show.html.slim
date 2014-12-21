@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Status:
+  = @offer.status
+p
+  strong Item:
+  = @offer.item_id
+p
+  strong User:
+  = @offer.user_id
+
+= link_to 'Edit', edit_offer_path(@offer)
+'|
+= link_to 'Back', offers_path

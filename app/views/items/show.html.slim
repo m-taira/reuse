@@ -1,5 +1,9 @@
 p#notice = notice
 .row
+  .col-md-12.pull-right
+    = link_to "交渉開始", item_offers_path(@item), method: :post unless @item.offered?(current_user)
+
+.row
   .col-md-6
     = image_tag @item.image1.url
     = image_tag @item.image2.url
@@ -9,7 +13,7 @@ p#notice = notice
       strong Name:
     p
       = @item.name
-    p
+
       strong Description:
     p
       = @item.description
@@ -40,3 +44,7 @@ p#notice = notice
     = link_to 'Edit', edit_item_path(@item)
     '|
     = link_to 'Back', items_path
+
+
+- if @item.offered?(current_user)
+  p ここにコメント欄

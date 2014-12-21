@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :items
+
+  resources :items do
+    resources :offers
+  end
 
   get 'auth/failure' => 'sessions#failure'
   get '/logout' => 'sessions#destroy', :as => :logout
