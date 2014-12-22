@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Body:
+  = @comment.body
+p
+  strong User:
+  = @comment.user_id
+p
+  strong Offer:
+  = @comment.offer_id
+
+= link_to 'Edit', edit_comment_path(@comment)
+'|
+= link_to 'Back', comments_path

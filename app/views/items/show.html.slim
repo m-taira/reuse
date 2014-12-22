@@ -1,13 +1,30 @@
+javascript:
+  $(function () {
+    $("img.change_photo").click(function () {
+      var ImgSrc = $(this).attr("src");
+      var ImgAlt = $(this).attr("alt");
+      var main_photo = $("#main_photo");
+      main_photo.attr({src: ImgSrc, alt: ImgAlt});
+      main_photo.hide();
+      main_photo.fadeIn("slow");
+      return false;
+    });
+  });
+
 p#notice = notice
 .row
   .col-md-12.pull-right
-    = link_to "交渉開始", item_offers_path(@item), method: :post unless @item.offered?(current_user)
+    - # noinspection RubyQuotedStringsInspection
+  = link_to '交渉開始', item_offers_path(@item), method: :post unless @item.offered?(current_user)
 
 .row
   .col-md-6
-    = image_tag @item.image1.url
-    = image_tag @item.image2.url
-    = image_tag @item.image3.url
+    .wrapper.text-center
+      p = image_tag @item.image1.url, id: 'main_photo'
+      ul.list-inline
+        li = image_tag @item.image1.url, class: 'change_photo', width: '100x100'
+        li = image_tag @item.image2.url, class: 'change_photo', width: '100x100'
+        li = image_tag @item.image3.url, class: 'change_photo', width: '100x100'
   .col-md-6
     p.text-muted
       strong Name:
@@ -41,10 +58,22 @@ p#notice = notice
       strong User:
       = @item.user_id
 
-    = link_to 'Edit', edit_item_path(@item)
-    '|
-    = link_to 'Back', items_path
-
 
 - if @item.offered?(current_user)
-  p ここにコメント欄
+  = simple_form_for([@item, @offer, @comment]) do |f|
+    = f.error_notification
+
+    .form-inputs
+      = f.input :body
+
+    .form-actions
+      = f.button :submit
+
+  .comments
+    - @offer.comments.each do |comment|
+      p = comment.body
+
+
+= link_to 'Edit', edit_item_path(@item)
+'|
+= link_to 'Back', items_path

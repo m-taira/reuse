@@ -11,6 +11,7 @@ class ItemsController < ApplicationController
   # GET /items/1.json
   def show
     @offer = @item.offer(current_user)
+    @comment = @offer.comments.build if @offer
   end
 
   # GET /items/new

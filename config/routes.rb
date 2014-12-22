@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-
   resources :items do
-    resources :offers
+    resources :offers do
+      resources :comments
+    end
   end
 
   get 'auth/failure' => 'sessions#failure'
