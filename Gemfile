@@ -80,3 +80,4 @@ gem "rmagick", require: false
 gem "kaminari"
 gem 'enumerize'
 gem 'jquery-turbolinks'
+gem 'active_hash'
