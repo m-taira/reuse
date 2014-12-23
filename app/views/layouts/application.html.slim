@@ -17,8 +17,7 @@ html
               span.icon-bar
               span.icon-bar
               span.icon-bar
-            a.navbar-brand[href="#"]
-              | Bootflat
+            = link_to "Bootflat", root_path, class:"navbar-brand"
 
           #bs-example-navbar-collapse-4.collapse.navbar-collapse.pull-right
             = link_to "Sign in", "/login", class: "btn btn-default navbar-btn" unless logged_in?

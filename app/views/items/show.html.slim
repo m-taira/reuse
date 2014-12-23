@@ -10,54 +10,41 @@ javascript:
       return false;
     });
   });
-
 p#notice = notice
 .row
-  .col-md-12.pull-right
-    - # noinspection RubyQuotedStringsInspection
-  = link_to '交渉開始', item_offers_path(@item), method: :post unless @item.offered?(current_user)
+  .col-md-6
+    .panel.panel-default
+      .panel-body
+        .wrapper.text-center
+          p = image_tag @item.image1.url, id: 'main_photo'
+          ul.list-inline
+            li = image_tag @item.image1.url, class: 'change_photo', width: '100x100'
+            li = image_tag @item.image2.url, class: 'change_photo', width: '100x100'
+            li = image_tag @item.image3.url, class: 'change_photo', width: '100x100'
+  .col-md-6
+    .panel.panel-default
+      .panel-heading
+        h1.panel-title
+          span.label.label-warning = @item.classification.text
+          = @item.name
+      .panel-body
+        p
+          = nl2br @item.description
+        h4
+          strong Category:
+        p
+          =  @item.category
+        h4
+          strong Prefecture:
+        p
+          = Prefecture.find(@item.prefecture).name
+          = @item.city
 
 .row
   .col-md-6
-    .wrapper.text-center
-      p = image_tag @item.image1.url, id: 'main_photo'
-      ul.list-inline
-        li = image_tag @item.image1.url, class: 'change_photo', width: '100x100'
-        li = image_tag @item.image2.url, class: 'change_photo', width: '100x100'
-        li = image_tag @item.image3.url, class: 'change_photo', width: '100x100'
   .col-md-6
-    p.text-muted
-      strong Name:
-    p
-      = @item.name
-
-      strong Description:
-    p
-      = @item.description
-    p
-      strong Category:
-    p
-      = @item.category
-    p
-      strong Prefecture:
-    p
-       = @item.prefecture
-    p
-      strong City:
-    p
-      = @item.city
-    p
-      strong Classification:
-    p
-      = @item.classification
-    p
-      strong Status:
-    p
-      = @item.status
-    p
-      strong User:
-      = @item.user_id
-
+    - # noinspection RubyQuotedStringsInspection
+    = link_to '交渉開始', item_offers_path(@item), class: 'btn btn-primary btn-block pull-right', method: :post unless @item.offered?(current_user)
 
 - if @item.offered?(current_user)
   = simple_form_for([@item, @offer, @comment]) do |f|
